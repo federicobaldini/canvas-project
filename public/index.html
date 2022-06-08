@@ -3,10 +3,40 @@
   <head>
     <meta charset="utf-8" />
     <title>Canvas Project</title>
+    <style media="screen">
+      body,
+      canvas {
+        width: 100%;
+        height: 100%;
+        margin: 0;
+      }
+    </style>
   </head>
   <body>
-    <h1>Canvas Project</h1>
-    <script src="./main.js"></script>
-    <script></script>
+    <canvas id="canvas" width="2000" height="2000"></canvas>
+    <script src="./canvas.js"></script>
+    <script>
+      // Create canvas context
+      const canvas = document.getElementById("canvas");
+      const context = canvas.getContext("2d");
+
+      // Render circles on canvas
+      const render = () => {
+        // Get circle data from C
+        let circles = _get_circles();
+        console.log("Got " + circles + " circles");
+
+        // Draw circle
+        context.beginPath();
+        context.arc(300, 300, 150, 0, 2 * Math.PI, false);
+        context.fillStyle = "dodgerblue";
+        context.fill();
+
+        console.log("Rendered");
+
+        // Request next animation frame and re-render with updated circles
+        // window.requestAnimationFrame(render);
+      };
+    </script>
   </body>
 </html>
