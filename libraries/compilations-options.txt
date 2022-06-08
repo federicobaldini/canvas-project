@@ -1,5 +1,5 @@
 // Exporting C functions to JavaScript
-emcc libraries/main.c -s WASM=1 -s EXPORTED_FUNCTIONS="['_main']" -o public/main.js
+emcc libraries/canvas.c -s WASM=1 -s EXPORTED_FUNCTIONS="['_main', '_get_circles']" -o public/canvas.js
 
 // Optimization command
-emcc libraries/main.c -s WASM=1 -s EXPORTED_FUNCTIONS="['_main']" -O3 -o public/main.js
+emcc libraries/canvas.c -s WASM=1 -s EXPORTED_FUNCTIONS="['_main', '_get_circles']" -O3 -o public/canvas.js
