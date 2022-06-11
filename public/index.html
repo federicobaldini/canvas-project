@@ -19,10 +19,13 @@
       const context = canvas.getContext("2d");
 
       // Render circles on canvas
-      const render = () => {
-        // Get circle data from C
-        let circles = _get_circles();
-        console.log("Got " + circles + " circles");
+      const render = (dataLength, circleStructSize) => {
+        // Get circle data from C - Typed Array
+        let circles = new Int32Array(
+          Module.HEAP32.buffer,
+          _get_circles(canvas.width, canvas.height),
+          dataLength
+        );
 
         // Draw circle
         context.beginPath();
@@ -33,7 +36,9 @@
         console.log("Rendered");
 
         // Request next animation frame and re-render with updated circles
-        // window.requestAnimationFrame(render);
+        window.requestAnimationFrame(() =>
+          render(dataLength, circleStructSize)
+        );
       };
     </script>
   </body>
