@@ -16,6 +16,18 @@ struct Circle
   int cg; // color - GREEN
   int cb; // color - BLUE
 };
+
+// Circle Animation Data Struct
+struct CircleAnimationData
+{
+  int x;  // x coordinate
+  int y;  // y coordinate
+  int r;  // circle radius
+  int xv; // x - axis velocity
+  int yv; // y - axis velocity
+  int xd; // x - axis direction (1 = forward, 0 = backward)
+  int yd; // y - axis direction (1 = forward, 0 = backward)
+};
 // Init circle data and start render - JavaScript
 int main()
 {
