@@ -28,6 +28,10 @@ struct CircleAnimationData
   int xd; // x - axis direction (1 = forward, 0 = backward)
   int yd; // y - axis direction (1 = forward, 0 = backward)
 };
+
+// Circles variable
+struct Circle circles[NUM_CIRCLES];
+struct CircleAnimationData animation_data[NUM_CIRCLES];
 // Init circle data and start render - JavaScript
 int main()
 {
