@@ -32,6 +32,13 @@ struct CircleAnimationData
 // Circles variable
 struct Circle circles[NUM_CIRCLES];
 struct CircleAnimationData animation_data[NUM_CIRCLES];
+
+// Random number generator
+int get_random_number(int min, int max)
+{
+  return (rand() % max) + min;
+}
+
 // Init circle data and start render - JavaScript
 int main()
 {
