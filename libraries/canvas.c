@@ -47,7 +47,8 @@ int main()
 }
 
 // Return circles to JavaScript
-int get_circles()
+struct Circle *get_circles(int canvas_width, int canvas_height)
 {
-  return 1;
+  // Update circles data
+  return circles;
 }
