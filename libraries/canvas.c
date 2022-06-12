@@ -80,5 +80,54 @@ int main()
 struct Circle *get_circles(int canvas_width, int canvas_height)
 {
   // Update circles data
+  for (int i = 0; i < NUM_CIRCLES; i++)
+  {
+    // Collision RIGHT - set x direction backward 0
+    if ((animation_data[i].x + animation_data[i].r) >= canvas_width)
+    {
+      animation_data[i].xd = 0;
+    }
+
+    // Collision LEFT - set x direction forward 1
+    if ((animation_data[i].x - animation_data[i].r) <= 0)
+    {
+      animation_data[i].xd = 1;
+    }
+
+    // Collision TOP - set y direction forward 1
+    if ((animation_data[i].y - animation_data[i].r) <= 0)
+    {
+      animation_data[i].yd = 1;
+    }
+
+    // Collision BOTTOM - set x direction forward
+    if ((animation_data[i].y + animation_data[i].r) >= canvas_height)
+    {
+      animation_data[i].yd = 0;
+    }
+
+    // Move circle in specified direction
+    if (animation_data[i].xd == 1)
+    {
+      animation_data[i].x += animation_data[i].xv;
+    }
+    else
+    {
+      animation_data[i].x -= animation_data[i].xv;
+    }
+    if (animation_data[i].yd == 1)
+    {
+      animation_data[i].y += animation_data[i].yv;
+    }
+    else
+    {
+      animation_data[i].y -= animation_data[i].yv;
+    }
+
+    // Update matching circle
+    circles[i].x = animation_data[i].x;
+    circles[i].y = animation_data[i].y;
+  }
+  // Return updated circles
   return circles;
 }
