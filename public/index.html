@@ -27,14 +27,20 @@
           dataLength
         );
 
-        // Draw circle
-        context.beginPath();
-        context.arc(300, 300, 150, 0, 2 * Math.PI, false);
-        context.fillStyle = "dodgerblue";
-        context.fill();
+        // Clear existing canvas to re-render
+        context.clearRect(0, 0, canvas.width, canvas.height);
 
-        console.log("Rendered");
+        // Loop data and get circle chunks
+        for (let i = 0; i < dataLength; i += circleStructSize) {
+          // Get circle data chunk
+          let circle = circles.slice(i, i + circleStructSize);
 
+          // Draw circle
+          context.beginPath();
+          context.arc(circle[0], circle[1], circle[2], 0, 2 * Math.PI, false);
+          context.fillStyle = `rgba(${circle[3]},${circle[4]},${circle[5]},1)`;
+          context.fill();
+        }
         // Request next animation frame and re-render with updated circles
         window.requestAnimationFrame(() =>
           render(dataLength, circleStructSize)
